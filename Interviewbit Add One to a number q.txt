@@ -4,11 +4,11 @@ CODE
 
 vector<int> Solution::plusOne(vector<int> &A) {
     int l=A.size();
-    if(A[0]==0)
+    if(A[0]==0)                                                                                                  
     {
         if(l>1){
             while(A[0]==0 && l>1){
-                A.erase(A.begin());
+                A.erase(A.begin());                                                                                //TO REMOVE ALL THE ZEROES IN THE BEGINNING OF THE VECTOR.
                 l-=1;
             }
         }
@@ -19,7 +19,7 @@ vector<int> Solution::plusOne(vector<int> &A) {
     }
     int p=0;
     for(int i=0;i<l;i++){
-        if(A[i]!=9){
+        if(A[i]!=9){                                                                                 //TO CHECK THE CASE FOR IF ALL THE DIGITS ARE 9.
             p=1;
         }
     }
