@@ -1,0 +1,49 @@
+https://www.interviewbit.com/problems/add-one-to-number/
+
+CODE
+
+vector<int> Solution::plusOne(vector<int> &A) {
+    int l=A.size();
+    if(A[0]==0)
+    {
+        if(l>1){
+            while(A[0]==0 && l>1){
+                A.erase(A.begin());
+                l-=1;
+            }
+        }
+        if(l==1 && A[0]==0){
+            A[0]=1;
+            return A;
+        }
+    }
+    int p=0;
+    for(int i=0;i<l;i++){
+        if(A[i]!=9){
+            p=1;
+        }
+    }
+    if(p==0){
+        for(int j=0;j<l;j++){
+            A[j]=0;
+        }
+        A.insert(A.begin(),1);
+        return A;
+    }
+    
+    if(A[l-1]<9 ){
+        A[l-1]+=1;
+        return A;
+    }
+    int j=l-1;
+    while(A[j]==9){
+        A[j]=0;
+        j--;
+    }
+    A[j]+=1;
+    return A;
+}
+
+
+
+// CORRECT ANSWER, SUBMITTED.
