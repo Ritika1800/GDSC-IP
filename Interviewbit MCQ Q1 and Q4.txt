@@ -1,8 +1,0 @@
-Q1 https://www.interviewbit.com/problems/amortized1/
- 
-Time complexity will be O(N) as we are incrementing the value of j by 1 and when j will become equal to n, then while loop will not terminate.
-
-
-Q4 https://www.interviewbit.com/problems/nestedcmpl3/ 
-
-I think that time complexity should be O(N*Sqrt(N)).
