@@ -1,0 +1,31 @@
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        int l1=nums1.size();
+        int l2=nums2.size();
+        map<int,int> m;
+        for(int i=0;i<l2-1;i++){
+            int p=1;
+            for(int j=i+1;j<l2;j++){
+                if(nums2[j]>nums2[i]){
+                    m[nums2[i]]=nums2[j];
+                    p=0;
+                    break;
+                }
+                
+                
+            }
+            m[nums2[l2-1]]=-1;
+            if(p==1){
+                m[nums2[i]]=-1;
+            }
+        }
+        for(int k=0;k<l1;k++){
+            nums1[k]=m[nums1[k]];
+            
+        }
+        return nums1;
+        
+    }
+    
+};
