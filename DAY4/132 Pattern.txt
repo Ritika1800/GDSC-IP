@@ -1,0 +1,26 @@
+class Solution {
+public:
+    bool find132pattern(vector<int>& arr) {
+        int n=arr.size();
+        
+        vector<int>Mini(n);
+        Mini[0]=arr[0];
+        
+        for(int i=1;i<n;i++) Mini[i]=min(Mini[i-1],arr[i]);
+        
+        stack<int>st;
+        
+        for(int j=n-1;j>=0;j--){
+            
+            while(st.size() > 0 && st.top() <= Mini[j])  
+                st.pop();
+            
+            if(st.size() > 0  && st.top() < arr[j]) return true; 
+            
+            st.push(arr[j]);
+        }
+        
+        return false;
+            
+    }
+};
