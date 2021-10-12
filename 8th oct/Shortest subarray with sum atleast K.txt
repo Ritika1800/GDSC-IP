@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int shortestSubarray(vector<int>& nums, int k) {
+        int l=nums.size();
+        int i=0,j=0, sum=0, mini=INT_MAX;
+        while(j<l){
+            sum+=nums[j];
+            if(sum<k){
+                j++;
+            }
+            else{
+                while(sum>=k){
+                    mini=min(mini,j-i+1);
+                    sum-=nums[i];
+                    i++;
+                }
+                j++;
+            }
+        }
+        return mini==INT_MAX?-1:mini;
+        
+    }
+};
