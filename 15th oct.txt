@@ -1,0 +1,47 @@
+
+1) Validate binary search Tree.
+class Solution {
+public:
+    bool isValidBST(TreeNode* root) {
+        TreeNode* node = root; 
+        stack<TreeNode*> stk; 
+        long prev = LONG_MIN; 
+        while (node || stk.size()) 
+            if (node) {
+                stk.push(node); 
+                node = node->left; 
+            } else {
+                node = stk.top(); stk.pop(); 
+                if (prev >= node->val) return false; 
+                prev = node->val; 
+                node = node->right; 
+            }
+        return true; 
+        
+    }
+};
+
+2) Kth smallest element
+class Solution {
+public:
+    int kthSmallest(TreeNode* root, int k) {
+        stack<TreeNode *> st;
+        TreeNode *node = root;
+        
+        while(node || !st.empty())
+        {
+            while(node)
+            {
+                st.push(node);
+                node = node->left;
+            }
+            node = st.top();
+            if(--k == 0)
+                return node->val;
+            st.pop();
+            node = node->right;
+        }
+        return 0;
+        
+    }
+};
