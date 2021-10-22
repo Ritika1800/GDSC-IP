@@ -1,0 +1,48 @@
+1) Binary tree right side view
+class Solution {
+public:
+    vector<int> rightSideView(TreeNode* root) {
+        stack<TreeNode*> stk;
+        TreeNode* node=root;
+        while(node){
+            stk.push(node);
+            node=node->right;
+        }
+        vector<int> v;
+        while(!stk.empty()){
+            v.push_back(stk.top()->val);
+            stk.pop();
+        }
+        reverse(v.begin(), v.end());
+        return v;
+    }
+};
+
+2) Two Sum IV - Input is a BST
+
+class Solution {
+public:
+
+    void inOrder(TreeNode* root, vector<int> &vec){
+        if(root==NULL) return;
+        inOrder(root->left, vec);
+        vec.push_back(root->val);
+        inOrder(root->right, vec);
+    }
+    
+    bool findTarget(TreeNode* root, int k) {
+        vector<int> in;
+        if(root==NULL) return false;
+        inOrder(root, in);
+        if(in.size()==1) return false;
+        int l = 0, r = in.size() - 1;
+        while(l<r){
+            if(in[l]+in[r] == k) return true;
+            else if(in[l]+in[r] < k) l++;
+            else r--;
+        }
+        return false;
+    }
+        
+    
+};
